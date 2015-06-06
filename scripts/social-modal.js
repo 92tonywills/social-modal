@@ -12,15 +12,19 @@ $(function() {
     });
 
     $('.social-modal .share-facebook').click(function() {
-        popupWindow('https://facebook.com/sharer/sharer.php?u=' + window.location.href);
+        popupWindow('https://facebook.com/sharer/sharer.php?u=' + currentURL());
     });
 
     $('.social-modal .share-twitter').click(function() {
-        var link = window.location.href;
+        var link = currentURL();
         var via = "thinkbituk";
         var text = "Simple Social Sharer"
         var url = 'https://twitter.com/intent/tweet?text=' + text + '&url=' + link + '&via=' + via;
         popupWindow(url);
+    });
+
+    $('.social-modal .share-reddit').click(function() {
+        window.open('https://www.reddit.com/submit?url=' + currentURL());
     });
 });
 
@@ -30,6 +34,10 @@ var showModal = function() {
 
 var hideModal = function() {
     $( '.social-modal' ).animate({top: "-100%", opacity: "0"}, 100);
+}
+
+var currentURL = function() {
+    return encodeURIComponent(window.location.href);
 }
 
 var popupWindow = function(url) {
