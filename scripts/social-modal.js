@@ -10,6 +10,10 @@ $(function() {
             hideModal();
         }
     });
+
+    $('.social-modal .share-facebook').click(function() {
+        window.open('https://facebook.com/sharer/sharer.php?sdk=joey&u=' + window.location.href, '_blank');
+    });
 });
 
 var showModal = function() {
