@@ -31,6 +31,14 @@ $(function() {
         var link = currentURL();
         popupWindow('https://plus.google.com/share?url=' + link);
     });
+
+    $('.social-modal .share-pinterest').click(function() {
+        var link = currentURL();
+        var media = "nothing";
+        var description = "nothing";
+        popupWindow('https://www.pinterest.com/pin/create/button?url=' + link
+            + '&media=' + media + '&description=' + description);
+    });
 });
 
 var showModal = function() {
