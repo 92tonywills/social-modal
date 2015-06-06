@@ -7,17 +7,19 @@
     <link href="skeleton.css" rel="stylesheet"/>
     <link href="social-modal.css" rel="stylesheet"/>
     <link href="styles.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="social-modal.js"></script>
 </head>
 
 <body>
     <div class="center-container">
         <h1>Click the Button to See the Modal</h1>
-        <button id="sharer-activator">Share</button>
+        <button class="social-modal-activator">Share</button>
     </div>
 
     <!-- Sharer Elements -->
     <div class="social-modal">
+        <button class="close-button">Close</button>
         <div class="center-container">
             <button class="share-button facebook-button">Facebook</button>
             <button class="share-button twitter-button">Twitter</button>
