@@ -26,6 +26,11 @@ $(function() {
     $('.social-modal .share-reddit').click(function() {
         window.open('https://www.reddit.com/submit?url=' + currentURL());
     });
+
+    $('.social-modal .share-gplus').click(function() {
+        var link = currentURL();
+        popupWindow('https://plus.google.com/share?url=' + link);
+    });
 });
 
 var showModal = function() {
