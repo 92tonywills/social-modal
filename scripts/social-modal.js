@@ -12,7 +12,14 @@ $(function() {
     });
 
     $('.social-modal .share-facebook').click(function() {
-        window.open('https://facebook.com/sharer/sharer.php?sdk=joey&u=' + window.location.href, '_blank');
+        var url = 'https://facebook.com/sharer/sharer.php?sdk=joey&u=' + window.location.href;
+        var width = Math.min(600, window.screen.width * 0.8);
+        var height = Math.min(400, window.screen.height * 0.5);
+        var leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+        var topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+        window.open(url, "Window2", "status=no,height=" + height + ",width=" + width + ",resizable=yes,left="
+            + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition
+            + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no");
     });
 });
 
