@@ -1,0 +1,21 @@
+body {
+    background-color: #E74C3C;
+}
+
+h1 {
+    color: #ECF0F1;
+}
+
+button {
+    background-color: #ECF0F1;
+    border-color: #ECF0F1;
+}
+
+button:hover {
+    background-color: #95A5A6;
+    border-color: #7F8C8D;
+}
+
+* {
+    transition: all 0.25s ease-in-out;
+}
