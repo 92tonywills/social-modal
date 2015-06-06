@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.85);
     z-index: 9999;
 }
 
@@ -17,12 +17,61 @@
     text-align: center;
 }
 
+
+.social-modal .share-button {
+    font-size: 1.5rem;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+}
+
+.social-modal .share-button:hover {
+    border: none;
+}
+
+.social-modal .share-facebook:hover {
+    background-color: #456299;
+}
+
+.social-modal .share-twitter:hover {
+    background-color: #4FADE9;
+}
+
+.social-modal .share-reddit:hover {
+    background-color: #E67E22;
+}
+
+.social-modal .share-gplus:hover {
+    background-color: #e34429;
+}
+
+.social-modal .share-pinterest:hover {
+    background-color: #c5282f;
+}
+
 .social-modal [class^="icon-"]:before, .social-modal [class*=" icon-"]:before {
-    font-size: 28px;
+    font-size: 1.7rem;
+    padding-right: 5px;
 }
 
 .social-modal .close-button {
+    width: auto;
+    margin: auto;
+    padding: 0;
+
     position: absolute;
     top: 10px;
     right: 10px;
+
+    background-color: transparent;
+    border: none;
+    color: #aaa;
+}
+
+.social-modal .close-button:hover {
+    color: #ccc;
+}
+
+.social-modal .icon-cross:before {
+    font-size: 3rem;
 }
