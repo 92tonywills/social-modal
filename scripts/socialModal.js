@@ -2,24 +2,11 @@
 
     $.fn.socialModal = function(options) {
         opts = $.extend({}, $.fn.socialModal.defaults, options);
-
+        openButton = this;
         injectHTML();
         attachStyles();
-
-        this.click(function() {
-            showModal();
-        });
-
-        closeButton.click(function() {
-            hideModal();
-        });
-
-        $(document).keyup(function(e) {
-            if (e.which == 27) {
-                hideModal();
-            }
-        });
-
+        addOpenEvents();
+        addCloseEvents();
         addShareFunctionality();
     };
 
@@ -61,6 +48,7 @@
     var opts;
     var modal;
     var closeButton;
+    var openButton;// may be a collection of elements that may not be buttons
     var buttonContainer;
     var facebookButton;
     var twitterButton;
@@ -127,6 +115,24 @@
     var attachStyles = function() {
 
     };
+
+    var addOpenEvents = function() {
+        openButton.click(function() {
+            showModal();
+        });
+    }
+
+    var addCloseEvents = function() {
+        closeButton.click(function() {
+            hideModal();
+        });
+
+        $(document).keyup(function(e) {
+            if (e.which == 27) {
+                hideModal();
+            }
+        });
+    }
 
     var addShareFunctionality = function() {
         !opts.facebook.enabled || facebookButton.click(function() {
