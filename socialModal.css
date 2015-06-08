@@ -1,16 +1,8 @@
 .socialModal {
-    position: fixed;
-    width: 100%;
-    height: 100%;
     background-color: rgba(0, 0, 0, 0.85);
-    z-index: 9999;
-
-    /*hide above the page*/
-    top: -100%;
-    opacity: 0;
 }
 
-.center-container, .button-container {
+.socialModal .button-container {
     position: absolute;
     width: 100%;
     height: 300px;
@@ -80,9 +72,11 @@
     top: 10px;
     right: 10px;
 
+    font-size: 2rem;
     background-color: transparent;
     border: none;
     color: #aaa;
+    vertical-align: top;
 }
 
 .socialModal .close-button:hover {
@@ -90,6 +84,4 @@
 }
 
 .socialModal .icon-cross:before {
-    font-size: 3rem;
-    display: block;
 }
