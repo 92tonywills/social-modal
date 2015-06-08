@@ -66,8 +66,8 @@
     background-color: #c5282f;
 }
 
-.socialModal [class^="icon-"]:before {
-    font-size: 2.5rem;
+.socialModal [class*=" icon-"]:before, .socialModal [class^="icon-"]:before {
+    font-size: 2.3rem;
     padding-right: 5px;
 }
 
@@ -91,4 +91,5 @@
 
 .socialModal .icon-cross:before {
     font-size: 3rem;
+    display: block;
 }

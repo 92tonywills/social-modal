@@ -7,11 +7,11 @@
         attachStyles();
         addOpenEvents();
         addCloseEvents();
-        addShareFunctionality();
     };
 
     $.fn.socialModal.defaults = {
         useIcons: true,
+        url: encodeURIComponent(window.location.href),
         closeButton: {
             text: "esc",
             iconClass: "icon-cross",
@@ -19,27 +19,31 @@
         facebook: {
             enabled: true,
             text: "Share",
-            iconclass: "icon-facebook",
+            iconClass: "icon-facebook",
         },
         twitter: {
             enabled: true,
             text: "Tweet",
-            iconclass: "icon-twitter",
+            iconClass: "icon-twitter",
+            tweetText: $( 'title' ).text(),
+            via: false,
         },
         reddit: {
             enabled: true,
             text: "Upload",
-            iconclass: "icon-reddit",
+            iconClass: "icon-reddit",
         },
         gplus: {
             enabled: true,
             text: "Post",
-            iconclass: "icon-gplus",
+            iconClass: "icon-gplus",
         },
         pinterest: {
             enabled: true,
             text: "Pin",
-            iconclass: "icon-pinterest",
+            iconClass: "icon-pinterest",
+            media: false,
+            description: $( 'meta[name="description"]' ).attr('content'),
         },
     };
 
@@ -48,7 +52,7 @@
     var opts;
     var modal;
     var closeButton;
-    var openButton;// may be a collection of elements that may not be buttons
+    var openButton; // may be a collection of elements that may not be buttons
     var buttonContainer;
     var facebookButton;
     var twitterButton;
@@ -67,49 +71,46 @@
             .text(opts.closeButton.text)
             .appendTo(modal);
 
-        if (opts.facebook.enabled) {
-            facebookButton = $("<button />")
-                .addClass("share-facebook")
-                .text(opts.facebook.text)
-                .appendTo(buttonContainer);
-        }
-        if (opts.twitter.enabled) {
-            twitterButton = $("<button />")
-                .addClass("share-twitter")
-                .text(opts.twitter.text)
-                .appendTo(buttonContainer);
-        }
-        if (opts.reddit.enabled) {
-            redditButton = $("<button />")
-                .addClass("share-reddit")
-                .text(opts.reddit.text)
-                .appendTo(buttonContainer);
-        }
-        if (opts.gplus.enabled) {
-            gplusButton = $("<button />")
-                .addClass("share-gplus")
-                .text(opts.gplus.text)
-                .appendTo(buttonContainer);
-        }
-        if (opts.pinterest.enabled) {
-            pinterestButton = $("<button />")
-                .addClass("share-pinterest")
-                .text(opts.pinterest.text)
-                .appendTo(buttonContainer);
-        }
-
-        if (opts.useIcons) {
-            addIconClasses();
-        }
+        !opts.facebook.enabled || addFacebookButton();
+        !opts.twitter.enabled || addTwitterButton();
+        !opts.reddit.enabled || addRedditButton();
+        !opts.gplus.enabled || addGPlusButton();
+        !opts.pinterest.enabled || addPinterestButton();
+        !opts.useIcons || addIconClasses();
     };
+
+    var addFacebookButton = function() {
+    facebookButton = $("<button />").addClass("share-facebook").text(opts.facebook.text)
+        .click(facebookClickHandler).appendTo(buttonContainer);
+    }
+
+    var addTwitterButton = function() {
+    twitterButton = $("<button />").addClass("share-twitter").text(opts.twitter.text)
+        .click(twitterClickHandler).appendTo(buttonContainer);
+    }
+
+    var addRedditButton = function() {
+    redditButton = $("<button />").addClass("share-reddit").text(opts.reddit.text)
+        .click(redditClickHandler).appendTo(buttonContainer);
+    }
+
+    var addGPlusButton = function() {
+    gplusButton = $("<button />").addClass("share-gplus").text(opts.gplus.text)
+        .click(gplusClickHandler).appendTo(buttonContainer);
+    }
+
+    var addPinterestButton = function() {
+    pinterestButton = $("<button />").addClass("share-pinterest").text(opts.pinterest.text)
+        .click(pinterestClickHandler).appendTo(buttonContainer);
+    }
 
     var addIconClasses = function() {
         closeButton.addClass(opts.closeButton.iconClass);
-        facebookButton.addClass(opts.facebook.iconClass);
-        twitterButton.addClass(opts.twitter.iconClass);
-        redditButton.addClass(opts.reddit.iconClass);
-        gplusButton.addClass(opts.gplus.iconClass);
-        pinterestButton.addClass(opts.pinterest.iconClass);
+        if (facebookButton) { facebookButton.addClass(opts.facebook.iconClass); }
+        if (twitterButton) { twitterButton.addClass(opts.twitter.iconClass); }
+        if (redditButton) { redditButton.addClass(opts.reddit.iconClass); }
+        if (gplusButton) { gplusButton.addClass(opts.gplus.iconClass); }
+        if (pinterestButton) { pinterestButton.addClass(opts.pinterest.iconClass); }
     };
 
     var attachStyles = function() {
@@ -134,36 +135,30 @@
         });
     }
 
-    var addShareFunctionality = function() {
-        !opts.facebook.enabled || facebookButton.click(function() {
-            popupWindow('https://facebook.com/sharer/sharer.php?u=' + currentURL());
-        });
+    var facebookClickHandler = function() {
+        popupWindow('https://facebook.com/sharer/sharer.php?u=' + opts.url);
+    };
 
-        !opts.twitter.enabled || twitterButton.click(function() {
-            var link = currentURL();
-            var via = "thinkbituk";
-            var text = "Simple Social Sharer"
-            var url = 'https://twitter.com/intent/tweet?text=' + text + '&url=' + link + '&via=' + via;
-            popupWindow(url);
-        });
+    var twitterClickHandler = function() {
+        var url = 'https://twitter.com/intent/tweet?text=' + opts.twitter.tweetText + '&url=' + opts.url
+        if (opts.twitter.via) { url += '&via=' + opts.twitter.via; }
+        popupWindow(url);
+    };
 
-        !opts.reddit.enabled || redditButton.click(function() {
-            window.open('https://www.reddit.com/submit?url=' + currentURL());
-        });
+    var redditClickHandler = function() {
+        window.open('https://www.reddit.com/submit?url=' + opts.url);
+    };
 
-        !opts.gplus.enabled || gplusButton.click(function() {
-            var link = currentURL();
-            popupWindow('https://plus.google.com/share?url=' + link);
-        });
+    var gplusClickHandler = function() {
+        popupWindow('https://plus.google.com/share?url=' + opts.url);
+    };
 
-        !opts.pinterest.enabled || pinterestButton.click(function() {
-            var link = currentURL();
-            var media = "nothing";
-            var description = "nothing";
-            popupWindow('https://www.pinterest.com/pin/create/button?url=' + link
-                + '&media=' + media + '&description=' + description);
-        });
-    }
+    var pinterestClickHandler = function() {
+        var url = 'https://www.pinterest.com/pin/create/button?url=' + opts.url;
+        if (opts.pinterest.media) { url += '&media=' + opts.pinterest.media; }
+        if (opts.pinterest.description) { url += '&description=' + opts.pinterest.description; }
+        popupWindow(url);
+    };
 
     var showModal = function() {
         modal.animate({top: "0", opacity: "1"}, 200);
@@ -171,10 +166,6 @@
 
     var hideModal = function() {
         modal.animate({top: "-100%", opacity: "0"}, 100);
-    };
-
-    var currentURL = function() {
-        return encodeURIComponent(window.location.href);
     };
 
     var popupWindow = function(url) {
