@@ -20,34 +20,7 @@
             }
         });
 
-        facebookButton.click(function() {
-            popupWindow('https://facebook.com/sharer/sharer.php?u=' + currentURL());
-        });
-
-        twitterButton.click(function() {
-            var link = currentURL();
-            var via = "thinkbituk";
-            var text = "Simple Social Sharer"
-            var url = 'https://twitter.com/intent/tweet?text=' + text + '&url=' + link + '&via=' + via;
-            popupWindow(url);
-        });
-
-        redditButton.click(function() {
-            window.open('https://www.reddit.com/submit?url=' + currentURL());
-        });
-
-        gplusButton.click(function() {
-            var link = currentURL();
-            popupWindow('https://plus.google.com/share?url=' + link);
-        });
-
-        pinterestButton.click(function() {
-            var link = currentURL();
-            var media = "nothing";
-            var description = "nothing";
-            popupWindow('https://www.pinterest.com/pin/create/button?url=' + link
-                + '&media=' + media + '&description=' + description);
-        });
+        addShareFunctionality();
     };
 
     $.fn.socialModal.defaults = {
@@ -154,6 +127,37 @@
     var attachStyles = function() {
 
     };
+
+    var addShareFunctionality = function() {
+        !opts.facebook.enabled || facebookButton.click(function() {
+            popupWindow('https://facebook.com/sharer/sharer.php?u=' + currentURL());
+        });
+
+        !opts.twitter.enabled || twitterButton.click(function() {
+            var link = currentURL();
+            var via = "thinkbituk";
+            var text = "Simple Social Sharer"
+            var url = 'https://twitter.com/intent/tweet?text=' + text + '&url=' + link + '&via=' + via;
+            popupWindow(url);
+        });
+
+        !opts.reddit.enabled || redditButton.click(function() {
+            window.open('https://www.reddit.com/submit?url=' + currentURL());
+        });
+
+        !opts.gplus.enabled || gplusButton.click(function() {
+            var link = currentURL();
+            popupWindow('https://plus.google.com/share?url=' + link);
+        });
+
+        !opts.pinterest.enabled || pinterestButton.click(function() {
+            var link = currentURL();
+            var media = "nothing";
+            var description = "nothing";
+            popupWindow('https://www.pinterest.com/pin/create/button?url=' + link
+                + '&media=' + media + '&description=' + description);
+        });
+    }
 
     var showModal = function() {
         modal.animate({top: "0", opacity: "1"}, 200);
