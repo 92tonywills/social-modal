@@ -1,7 +1,7 @@
 (function($) {
 
     $.fn.socialModal = function(options) {
-        opts = $.extend({}, $.fn.socialModal.defaults, options);
+        opts = $.extend(true, {}, $.fn.socialModal.defaults, options);
         openButton = this;
         injectHTML();
         attachStyles();
