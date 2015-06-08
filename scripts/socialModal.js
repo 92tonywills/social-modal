@@ -51,26 +51,35 @@
     };
 
     $.fn.socialModal.defaults = {
-        "use-icons": true,
-        "facebook": {
-            "enabled": true,
-            "icon-class": "icon-facebook",
+        useIcons: true,
+        closeButton: {
+            text: "esc",
+            iconClass: "icon-cross",
         },
-        "twitter": {
-            "enabled": true,
-            "icon-class": "icon-twitter",
+        facebook: {
+            enabled: true,
+            text: "Share",
+            iconclass: "icon-facebook",
         },
-        "reddit": {
-            "enabled": true,
-            "icon-class": "icon-reddit",
+        twitter: {
+            enabled: true,
+            text: "Tweet",
+            iconclass: "icon-twitter",
         },
-        "gplus": {
-            "enabled": true,
-            "icon-class": "icon-gplus",
+        reddit: {
+            enabled: true,
+            text: "Upload",
+            iconclass: "icon-reddit",
         },
-        "pinterest": {
-            "enabled": true,
-            "icon-class": "icon-pinterest",
+        gplus: {
+            enabled: true,
+            text: "Post",
+            iconclass: "icon-gplus",
+        },
+        pinterest: {
+            enabled: true,
+            text: "Pin",
+            iconclass: "icon-pinterest",
         },
     };
 
@@ -90,38 +99,56 @@
 
     var injectHTML = function() {
         modal = $("<div />").addClass("socialModal").appendTo("body");
-        closeButton = $("<button />").addClass("close-button").addClass("icon-cross").text("esc").appendTo(modal);
         buttonContainer = $("<div />").addClass("button-container").appendTo(modal);
 
+        closeButton = $("<button />")
+            .addClass("close-button")
+            .text(opts.closeButton.text)
+            .appendTo(modal);
+
         if (opts.facebook.enabled) {
-            facebookButton = $("<button />").addClass("share-button").addClass("share-facebook")
+            facebookButton = $("<button />")
+                .addClass("share-facebook")
+                .text(opts.facebook.text)
                 .appendTo(buttonContainer);
-            $("<span />").addClass("icon-facebook").text("Share").appendTo(facebookButton);
         }
         if (opts.twitter.enabled) {
-            twitterButton = $("<button />").addClass("share-button").addClass("share-twitter")
+            twitterButton = $("<button />")
+                .addClass("share-twitter")
+                .text(opts.twitter.text)
                 .appendTo(buttonContainer);
-            $("<span />").addClass("icon-twitter").text("Share").appendTo(twitterButton);
         }
         if (opts.reddit.enabled) {
-            redditButton = $("<button />").addClass("share-button").addClass("share-reddit")
+            redditButton = $("<button />")
+                .addClass("share-reddit")
+                .text(opts.reddit.text)
                 .appendTo(buttonContainer);
-            $("<span />").addClass("icon-reddit").text("Share").appendTo(redditButton);
         }
         if (opts.gplus.enabled) {
-            gplusButton = $("<button />").addClass("share-button").addClass("share-gplus")
+            gplusButton = $("<button />")
+                .addClass("share-gplus")
+                .text(opts.gplus.text)
                 .appendTo(buttonContainer);
-            $("<span />").addClass("icon-gplus").text("Share").appendTo(gplusButton);
         }
         if (opts.pinterest.enabled) {
-            pinterestButton = $("<button />").addClass("share-button").addClass("share-pinterest")
+            pinterestButton = $("<button />")
+                .addClass("share-pinterest")
+                .text(opts.pinterest.text)
                 .appendTo(buttonContainer);
-            $("<span />").addClass("icon-pinterest").text("Share").appendTo(pinterestButton);
+        }
+
+        if (opts.useIcons) {
+            addIconClasses();
         }
     };
 
     var addIconClasses = function() {
-
+        closeButton.addClass(opts.closeButton.iconClass);
+        facebookButton.addClass(opts.facebook.iconClass);
+        twitterButton.addClass(opts.twitter.iconClass);
+        redditButton.addClass(opts.reddit.iconClass);
+        gplusButton.addClass(opts.gplus.iconClass);
+        pinterestButton.addClass(opts.pinterest.iconClass);
     };
 
     var attachStyles = function() {

@@ -12,7 +12,12 @@
     <script src="scripts/socialModal.js"></script>
     <script>
     $(function() {
-        $( ".socialModal-activator" ).socialModal();
+        $( ".socialModal-activator" ).socialModal({
+            useIcons: false,
+            reddit: {
+                enabled: false,
+            },
+        });
     });
     </script>
 </head>

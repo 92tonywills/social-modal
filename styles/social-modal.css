@@ -19,7 +19,7 @@
     text-align: center;
 }
 
-.socialModal .share-button {
+.socialModal [class^="share-"] {
     width: auto;
     height: auto;
     background-color: transparent;
