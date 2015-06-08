@@ -1,4 +1,4 @@
-.social-modal {
+.socialModal {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -10,7 +10,7 @@
     opacity: 0;
 }
 
-.center-container {
+.center-container, .button-container {
     position: absolute;
     width: 100%;
     height: 300px;
@@ -19,7 +19,7 @@
     text-align: center;
 }
 
-.social-modal .share-button {
+.socialModal .share-button {
     width: auto;
     height: auto;
     background-color: transparent;
@@ -29,49 +29,49 @@
     margin: 5px 5px;
 }
 
-.social-modal .share-facebook, .social-modal .share-facebook:hover {
+.socialModal .share-facebook, .socialModal .share-facebook:hover {
     border: none;
     border-bottom: 3px solid #456299;
 }
-.social-modal .share-twitter, .social-modal .share-twitter:hover {
+.socialModal .share-twitter, .socialModal .share-twitter:hover {
     border: none;
     border-bottom: 3px solid #4FADE9;
 }
-.social-modal .share-reddit, .social-modal .share-reddit:hover {
+.socialModal .share-reddit, .socialModal .share-reddit:hover {
     border: none;
     border-bottom: 3px solid #E67E22;
 }
-.social-modal .share-gplus, .social-modal .share-gplus:hover {
+.socialModal .share-gplus, .socialModal .share-gplus:hover {
     border: none;
     border-bottom: 3px solid #e34429;
 }
-.social-modal .share-pinterest, .social-modal .share-pinterest:hover {
+.socialModal .share-pinterest, .socialModal .share-pinterest:hover {
     border: none;
     border-bottom: 3px solid #c5282f;
 }
 
-.social-modal .share-facebook:hover {
+.socialModal .share-facebook:hover {
     background-color: #456299;
 }
-.social-modal .share-twitter:hover {
+.socialModal .share-twitter:hover {
     background-color: #4FADE9;
 }
-.social-modal .share-reddit:hover {
+.socialModal .share-reddit:hover {
     background-color: #E67E22;
 }
-.social-modal .share-gplus:hover {
+.socialModal .share-gplus:hover {
     background-color: #e34429;
 }
-.social-modal .share-pinterest:hover {
+.socialModal .share-pinterest:hover {
     background-color: #c5282f;
 }
 
-.social-modal [class^="icon-"]:before {
+.socialModal [class^="icon-"]:before {
     font-size: 2.5rem;
     padding-right: 5px;
 }
 
-.social-modal .close-button {
+.socialModal .close-button {
     width: auto;
     margin: auto;
     padding: 0;
@@ -85,10 +85,10 @@
     color: #aaa;
 }
 
-.social-modal .close-button:hover {
+.socialModal .close-button:hover {
     color: #ccc;
 }
 
-.social-modal .icon-cross:before {
+.socialModal .icon-cross:before {
     font-size: 3rem;
 }

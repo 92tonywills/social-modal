@@ -9,25 +9,18 @@
     <link href="styles/social-modal.css" rel="stylesheet"/>
     <link href="styles/styles.css"       rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="scripts/social-modal.js"></script>
+    <script src="scripts/socialModal.js"></script>
+    <script>
+    $(function() {
+        $( ".socialModal-activator" ).socialModal();
+    });
+    </script>
 </head>
 
 <body>
     <div class="center-container">
         <h1>Click the Button to See the Modal</h1>
-        <button class="social-modal-activator">Share</button>
-    </div>
-
-    <!-- Sharer Elements -->
-    <div class="social-modal">
-        <button class="close-button icon-cross"></button>
-        <div class="center-container">
-            <button class="share-button share-facebook"><span class="icon-facebook"></span>Share</button>
-            <button class="share-button share-twitter"><span class="icon-twitter"></span>Tweet</button>
-            <button class="share-button share-reddit"><span class="icon-reddit"></span> Submit</button>
-            <button class="share-button share-gplus"><span class="icon-gplus"></span>Post</button>
-            <button class="share-button share-pinterest"><span class="icon-pinterest"></span>Pin</button>
-        </div>
+        <button class="socialModal-activator">Share</button>
     </div>
 </body>
 
