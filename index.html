@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Social Sharer Modal</title>
+    <link href="styles/normalize.css" rel="stylesheet"/>
+    <link href="styles/skeleton.css" rel="stylesheet"/>
+    <link href="styles/icons.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <!-- include socialModal -->
+    <link href="../socialModal.css" rel="stylesheet"/>
+    <script src="../socialModal.js"></script>
+    <script>
+    $(function() {
+        $( ".socialModal-activator-1" ).socialModal();
+
+        $( ".socialModal-activator-2" ).socialModal({
+            twitter: {
+                via: "thinkbituk"
+            },
+            reddit: {
+                enabled: false
+            }
+        });
+
+        $( ".socialModal-activator-3" ).socialModal({
+            modal: {
+                hideCss: { "bottom": "-100%" },
+                showCss: { "bottom": 0 },
+            }
+        });
+
+        $( ".socialModal-activator-4" ).socialModal({
+            useIcons: false,
+            facebook: {
+                text: "Facebook"
+            },
+            twitter: {
+                text: "Twitter"
+            },
+            reddit: {
+                text: "Reddit"
+            },
+            gplus: {
+                text: "Google+"
+            },
+            pinterest: {
+                text: "Pinterest"
+            },
+        });
+    });
+    </script>
+
+    <!-- provide own styles, can override socialModal css here  -->
+    <link href="styles/styles.css" rel="stylesheet"/>
+</head>
+
+<body>
+    <div class="center-container">
+        <button class="socialModal-activator-1">Default Options</button>
+        <button class="socialModal-activator-2">No Reddit, provide twitter via</button>
+        <button class="socialModal-activator-3">From bottom animation</button>
+        <button class="socialModal-activator-4">No icons, custom text</button>
+    </div>
+</body>
+
+</html>
