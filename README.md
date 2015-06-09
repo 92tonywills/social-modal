@@ -2,6 +2,9 @@
 A simple and easy to use jQuery plugin for showing social network sharing links in a customisable modal.
 Made by [thinkbit](http://thinkbit.co.uk).
 
+This is the master branch, features here are not guaranteed to work correctly, for the latest stable
+working version, switch to the [release branch](https://github.com/thinkbituk/social-modal/tree/release).
+
 ## Features
 - Displays share buttons in a full screen modal onClick of an element
     - Totally responsive
