@@ -65,6 +65,7 @@
 
 .socialModal .close-button {
     width: auto;
+    height: auto;
     margin: auto;
     padding: 0;
 
@@ -72,16 +73,19 @@
     top: 10px;
     right: 10px;
 
-    font-size: 2rem;
     background-color: transparent;
     border: none;
     color: #aaa;
-    vertical-align: top;
 }
 
 .socialModal .close-button:hover {
     color: #ccc;
 }
 
-.socialModal .icon-cross:before {
+.socialModal .close-button::before {
+    display: block;
+    font-size: 4.1rem;
+    position: relative;
+    left: 3px;
+    top: 3px;
 }
