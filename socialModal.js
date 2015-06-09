@@ -10,8 +10,8 @@
         var modal = $("<div />").addClass("socialModal").appendTo("body");
         var buttonContainer = $("<div />").addClass("button-container").appendTo(modal);
 
-        var closeButton = $("<button />").addClass("close-button").text(opts.closeButton.text)
-            .attr( { title: opts.closeButton.title } ).appendTo(modal);
+        var closeButton = $("<button />").addClass("close-button")
+            .attr( { title: opts.closeButton.title } ).text(opts.closeButton.text).appendTo(modal);
 
         var facebookButton; var twitterButton; var redditButton; var gplusButton; var pinterestButton;
         if (opts.facebook.enabled) {
