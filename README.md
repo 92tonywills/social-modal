@@ -24,7 +24,7 @@ and [schema.org](http://schema.org) for google.
 To view the examples, just download the zip and open open up `examples/index.html` in your favourite browser.
 Check out the source code to see which options were set for each modal. Please note, the default modal uses
 the current address as the default link to share, if you open the file in a browser (you url reads `file://...`)
-then the twitter, facebook and google+ will not be able to set the rich content for the link.
+then Twitter, Facebook and Google+ will not be able to set the rich content for the link.
 
 ## Installation
 To use this on your site just download the zip of this project and include the `socialModal.js` and
