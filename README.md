@@ -7,6 +7,7 @@ Made by [thinkbit](http://thinkbit.co.uk).
     - Totally responsive
     - Minimal effect on screen real estate
 - Uses simple share urls so no extra js or sdks
+    - Opens post urls in a popup window or new tab, depending on OS and browser settings
 - Currently supports:
     - Facebook
     - Twitter
@@ -16,11 +17,14 @@ Made by [thinkbit](http://thinkbit.co.uk).
     - Pinterest  
         - Supports media and description options  
 - Attempts to provide intelligent defaults for extra options to Twitter and Pinterest, Facebook and Google
-will do this themselves from the meta data they define.
+will do this themselves from the meta data they define. Look up [Open Graph](http://ogp.me) for facebook
+and [schema.org](http://schema.org) for google.
 
 ### Examples
-You can download the example from here and have a look or you can go to
-[thinkbit's blog](http://blog.thinkbit .co.uk), the post pages utilise this plugin.
+To view the examples, just download the zip and open open up `examples/index.html` in your favourite browser.
+Check out the source code to see which options were set for each modal. Please note, the default modal uses
+the current address as the default link to share, if you open the file in a browser (you url reads `file://...`)
+then the twitter, facebook and google+ will not be able to set the rich content for the link.
 
 ## Installation
 To use this on your site just download the zip of this project and include the `socialModal.js` and
@@ -32,17 +36,16 @@ or override the styles later to suit your own needs.
 The script requires jQuery, it does not provide it itself. You must include jQuery somewhere in your document
 before the plugin.
 
-### Icons
+#### Icons
 Icons are turned on by default, but they are not provided by the script or the styles, you have to provide
 them yourself. You are free to use the icons provided in the example, though. You can also use your own icons,
 but you will need to change the icon classes (in the settings) if they differ in name from the defaults.
 
-The icon font used in the example was created with [fontello](http://www.fontello.com).
+The icon font used in the example was created for free with [fontello](http://www.fontello.com).
 
 ## Usage
 To use the plugin just call `.socialModal()` on the element you wish to trigger the activation of the
-modal once jQuery and the plugin have loaded. Supports multiple trigger element, but it will not play nice
-if the function is called more than once.
+modal once jQuery and the plugin have loaded.
 
 ```html
 <head>
@@ -64,13 +67,19 @@ if the function is called more than once.
 
 ```
 
-## Customisation
+### Customisation
 The plugin provides a range of settings that can be tuned as you wish. The current full options are:
 
 ```javascript
-defaults = {
+$.fn.socialModal.defaults = {
     useIcons: true,
-    url: encodeURIComponent(window.location.href),
+    url: window.location.href,
+    modal: {
+        showCss: null, // defaults to { "top": 0, "opacity": 1 } if unset
+        showAnimationDuration: 200,
+        hideCss: null, // defaults to { "top": "-100%", "opacity": 0 } if unset
+        hideAnimationDuration: 100,
+    },
     closeButton: {
         text: "esc",
         iconClass: "icon-cross",
@@ -101,35 +110,20 @@ defaults = {
         enabled: true,
         text: "Pin",
         iconClass: "icon-pinterest",
-        media: false,
+        media: $( 'meta[name="image"]' ).attr('content'),
         description: $( 'meta[name="description"]' ).attr('content'),
     },
 };
 ```
+The default animation is to fade and move in from the top. To have your own animation, simply provide the css
+for when the modal is hidden and the css for when it is shown. The modal will likely work if only supply one,
+but it probably won't look goof if it does, you're best off providing both.
 
-For example if you wanted to disable reddit, use your own close icon and provide a via for twitter you
-would call the plugin like this:
-
-```javascript
-$( '.some-element' ).socialModal({
-    closeButton: {
-        iconsClass: "your-close-icon",
-    },
-    twitter: {
-        via: "yourusername",
-    },
-    reddit: {
-        enabled: false,
-    },
-});
-```
-
-This assumes you have defined `.your-close-icon` somewhere in your css.
-
-More options including customisable animations are coming in future release.
+For examples of using the options, check out the examples.
 
 You are also free to customise or override the styles provided in the `socialModal.css` file to suit
 your needs.
 
 ## Learn More
-Learn how to make a similar effect for yourself [in this blog post](http://blog.thinkbit.co.uk/a-simple-social-sharer-modal).
+Learn how to make a similar effect for yourself in this
+[blog post](http://blog.thinkbit.co.uk/a-simple-social-sharer-modal).
