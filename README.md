@@ -82,17 +82,20 @@ $.fn.socialModal.defaults = {
         hideAnimationDuration: 100,
     },
     closeButton: {
-        text: "esc",
+        text: "Close",
+        title: "Close or Press 'esc'",
         iconClass: "icon-cross",
     },
     facebook: {
         enabled: true,
         text: "Share",
+        title: "Share on Facebook",
         iconClass: "icon-facebook",
     },
     twitter: {
         enabled: true,
         text: "Tweet",
+        title: "Tweet via Twitter",
         iconClass: "icon-twitter",
         tweetText: $( 'title' ).text(),
         via: false,
@@ -100,16 +103,19 @@ $.fn.socialModal.defaults = {
     reddit: {
         enabled: true,
         text: "Upload",
+        title: "Upload to Reddit",
         iconClass: "icon-reddit",
     },
     gplus: {
         enabled: true,
         text: "Post",
+        title: "Post to Google+",
         iconClass: "icon-gplus",
     },
     pinterest: {
         enabled: true,
         text: "Pin",
+        title: "Pin to Pinterest",
         iconClass: "icon-pinterest",
         media: $( 'meta[name="image"]' ).attr('content'),
         description: $( 'meta[name="description"]' ).attr('content'),
@@ -123,7 +129,8 @@ but it probably won't look goof if it does, you're best off providing both.
 For examples of using the options, check out the [examples](http://thinkbituk.github.io/social-modal/).
 
 You are also free to customise or override the styles provided in the `socialModal.css` file to suit
-your needs.
+your needs. This will be necessary if you use your own icon fronts with different names as the styles are
+applied statically from that file.
 
 ## Learn More
 Learn how to make a similar effect for yourself in this
