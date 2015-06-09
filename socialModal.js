@@ -8,29 +8,36 @@
 
         // Create Modal and Buttons
         var modal = $("<div />").addClass("socialModal").appendTo("body");
-        var closeButton = $("<button />").addClass("close-button").text(opts.closeButton.text).appendTo(modal);
         var buttonContainer = $("<div />").addClass("button-container").appendTo(modal);
+
+        var closeButton = $("<button />").addClass("close-button").text(opts.closeButton.text)
+            .attr( { title: opts.closeButton.title } ).appendTo(modal);
 
         var facebookButton; var twitterButton; var redditButton; var gplusButton; var pinterestButton;
         if (opts.facebook.enabled) {
         facebookButton = $("<button />").addClass("share-facebook").text(opts.facebook.text)
-            .click(function() { facebookClickHandler(opts); }).appendTo(buttonContainer);
+            .attr( { title: opts.facebook.title } ).click(function() { facebookClickHandler(opts); })
+            .appendTo(buttonContainer);
         }
         if (opts.twitter.enabled) {
         twitterButton = $("<button />").addClass("share-twitter").text(opts.twitter.text)
-            .click(function() { twitterClickHandler(opts); }).appendTo(buttonContainer);
+            .attr( { title: opts.twitter.title } ).click(function() { twitterClickHandler(opts); })
+            .appendTo(buttonContainer);
         }
         if (opts.reddit.enabled) {
         redditButton = $("<button />").addClass("share-reddit").text(opts.reddit.text)
-            .click(function() { redditClickHandler(opts); }).appendTo(buttonContainer);
+            .attr( { title: opts.reddit.title } ).click(function() { redditClickHandler(opts); })
+            .appendTo(buttonContainer);
         }
         if (opts.gplus.enabled) {
         gplusButton = $("<button />").addClass("share-gplus").text(opts.gplus.text)
-            .click(function() { gplusClickHandler(opts); }).appendTo(buttonContainer);
+            .attr( { title: opts.gplus.title } ).click(function() { gplusClickHandler(opts); })
+            .appendTo(buttonContainer);
         }
         if (opts.pinterest.enabled) {
         pinterestButton = $("<button />").addClass("share-pinterest").text(opts.pinterest.text)
-            .click(function() { pinterestClickHandler(opts); }).appendTo(buttonContainer);
+            .attr( { title: opts.pinterest.title } ).click(function() { pinterestClickHandler(opts); })
+            .appendTo(buttonContainer);
         }
 
         // add icons
@@ -74,17 +81,20 @@
             hideAnimationDuration: 100,
         },
         closeButton: {
-            text: "esc",
+            text: "Close",
+            title: "Close or Press 'esc'",
             iconClass: "icon-cross",
         },
         facebook: {
             enabled: true,
             text: "Share",
+            title: "Share on Facebook",
             iconClass: "icon-facebook",
         },
         twitter: {
             enabled: true,
             text: "Tweet",
+            title: "Tweet via Twitter",
             iconClass: "icon-twitter",
             tweetText: $( 'title' ).text(),
             via: false,
@@ -92,16 +102,19 @@
         reddit: {
             enabled: true,
             text: "Upload",
+            title: "Upload to Reddit",
             iconClass: "icon-reddit",
         },
         gplus: {
             enabled: true,
             text: "Post",
+            title: "Post to Google+",
             iconClass: "icon-gplus",
         },
         pinterest: {
             enabled: true,
             text: "Pin",
+            title: "Pin to Pinterest",
             iconClass: "icon-pinterest",
             media: $( 'meta[name="image"]' ).attr('content'),
             description: $( 'meta[name="description"]' ).attr('content'),
@@ -109,7 +122,7 @@
     };
 
     // Click Handlers
-    
+
     var facebookClickHandler = function(opts) {
         var link = encodeURIComponent(opts.url);
         popupWindow('https://facebook.com/sharer/sharer.php?u=' + link);
