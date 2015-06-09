@@ -1,5 +1,5 @@
 # Social Modal
-A simple and easy to use jQuery plugin for showing social network sharing links in customisable modal.
+A simple and easy to use jQuery plugin for showing social network sharing links in a customisable modal.
 Made by [thinkbit](http://thinkbit.co.uk).
 
 ## Features
@@ -20,15 +20,17 @@ will do this themselves from the meta data they define.
 
 ### Examples
 You can download the example from here and have a look or you can go to
-[thinkbit's blog](http://blog.thinkbit .co.uk), the post pages utilize this plugin.
+[thinkbit's blog](http://blog.thinkbit .co.uk), the post pages utilise this plugin.
 
 ## Installation
 To use this on your site just download the zip of this project and include the `socialModal.js` and
-`socialModal.css` files in your head. The style file is not strictly necessary but it will look crap
-otherwise. You can edit this file or override the styles later if need be.
+`socialModal.css` files in your document somewhere (in you head or at the bottom of the page, for instance).
+The style file is not strictly necessary but the modal will be very ugly otherwise. You can edit this file
+or override the styles later to suit your own needs.
 
 ### Requirements
-The script requires jQuery, it does not provide it itself.
+The script requires jQuery, it does not provide it itself. You must include jQuery somewhere in your document
+before the plugin.
 
 ### Icons
 Icons are turned on by default, but they are not provided by the script or the styles, you have to provide
@@ -122,7 +124,7 @@ $( '.some-element' ).socialModal({
 });
 ```
 
-This assumes you have define `.your-close-icon` somewhere in your css.
+This assumes you have defined `.your-close-icon` somewhere in your css.
 
 More options including customisable animations are coming in future release.
 
