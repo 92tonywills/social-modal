@@ -21,10 +21,8 @@ will do this themselves from the meta data they define. Look up [Open Graph](htt
 and [schema.org](http://schema.org) for google.
 
 ### Examples
-To view the examples, just download the zip and open open up `examples/index.html` in your favourite browser.
-Check out the source code to see which options were set for each modal. Please note, the default modal uses
-the current address as the default link to share, if you open the file in a browser (you url reads `file://...`)
-then Twitter, Facebook and Google+ will not be able to set the rich content for the link.
+You can view some example usages [here](http://thinkbituk.github.io/social-modal/), check out their source
+for how to use the different parameters.
 
 ## Installation
 To use this on your site just download the zip of this project and include the `socialModal.js` and
@@ -119,7 +117,7 @@ The default animation is to fade and move in from the top. To have your own anim
 for when the modal is hidden and the css for when it is shown. The modal will likely work if only supply one,
 but it probably won't look goof if it does, you're best off providing both.
 
-For examples of using the options, check out the examples.
+For examples of using the options, check out the [examples](http://thinkbituk.github.io/social-modal/).
 
 You are also free to customise or override the styles provided in the `socialModal.css` file to suit
 your needs.
