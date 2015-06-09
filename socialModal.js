@@ -12,6 +12,12 @@
     $.fn.socialModal.defaults = {
         useIcons: true,
         url: window.location.href,
+        modal: {
+            showCss: { "top": 0, "opacity": 1 },
+            showAnimationDuration: 200,
+            hideCss: { "top": "-100%", "opacity": 0 },
+            hideAnimationDuration: 100,
+        },
         closeButton: {
             text: "esc",
             iconClass: "icon-cross",
@@ -113,14 +119,8 @@
     };
 
     var attachStyles = function() {
-        modal.css( {
-            "position": "fixed",
-            "width": "100%",
-            "height": "100%",
-            "z-index": 9999,
-            "top": "-100%",
-            "opacity": 0,
-        });
+        modal.css( { "position": "fixed", "width": "100%", "height": "100%", "z-index": 9999 });
+        modal.css(opts.modal.hideCss);
     };
 
     var addOpenEvents = function() {
@@ -173,11 +173,11 @@
     };
 
     var showModal = function() {
-        modal.animate({top: "0", opacity: "1"}, 200);
+        modal.animate(opts.modal.showCss, opts.modal.showAnimationDuration);
     };
 
     var hideModal = function() {
-        modal.animate({top: "-100%", opacity: "0"}, 100);
+        modal.animate(opts.modal.hideCss, opts.modal.hideAnimationDuration);
     };
 
     var popupWindow = function(url) {
