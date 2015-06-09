@@ -1,5 +1,5 @@
 # Social Modal
-A simple and easy to use jQuery plugin for showing social network sharing links in customisable modal.
+A simple and easy to use jQuery plugin for showing social network sharing links in a customisable modal.
 Made by [thinkbit](http://thinkbit.co.uk).
 
 ## Features
@@ -7,6 +7,7 @@ Made by [thinkbit](http://thinkbit.co.uk).
     - Totally responsive
     - Minimal effect on screen real estate
 - Uses simple share urls so no extra js or sdks
+    - Opens post urls in a popup window or new tab, depending on OS and browser settings
 - Currently supports:
     - Facebook
     - Twitter
@@ -16,31 +17,33 @@ Made by [thinkbit](http://thinkbit.co.uk).
     - Pinterest  
         - Supports media and description options  
 - Attempts to provide intelligent defaults for extra options to Twitter and Pinterest, Facebook and Google
-will do this themselves from the meta data they define.
+will do this themselves from the meta data they define. Look up [Open Graph](http://ogp.me) for facebook
+and [schema.org](http://schema.org) for google.
 
 ### Examples
-You can download the example from here and have a look or you can go to
-[thinkbit's blog](http://blog.thinkbit .co.uk), the post pages utilize this plugin.
+You can view some example usages [here](http://thinkbituk.github.io/social-modal/), check out their source
+for how to use the different parameters.
 
 ## Installation
 To use this on your site just download the zip of this project and include the `socialModal.js` and
-`socialModal.css` files in your head. The style file is not strictly necessary but it will look crap
-otherwise. You can edit this file or override the styles later if need be.
+`socialModal.css` files in your document somewhere (in you head or at the bottom of the page, for instance).
+The style file is not strictly necessary but the modal will be very ugly otherwise. You can edit this file
+or override the styles later to suit your own needs.
 
 ### Requirements
-The script requires jQuery, it does not provide it itself.
+The script requires jQuery, it does not provide it itself. You must include jQuery somewhere in your document
+before the plugin.
 
-### Icons
+#### Icons
 Icons are turned on by default, but they are not provided by the script or the styles, you have to provide
 them yourself. You are free to use the icons provided in the example, though. You can also use your own icons,
 but you will need to change the icon classes (in the settings) if they differ in name from the defaults.
 
-The icon font used in the example was created with [fontello](http://www.fontello.com).
+The icon font used in the example was created for free with [fontello](http://www.fontello.com).
 
 ## Usage
 To use the plugin just call `.socialModal()` on the element you wish to trigger the activation of the
-modal once jQuery and the plugin have loaded. Supports multiple trigger element, but it will not play nice
-if the function is called more than once.
+modal once jQuery and the plugin have loaded.
 
 ```html
 <head>
@@ -62,13 +65,19 @@ if the function is called more than once.
 
 ```
 
-## Customisation
+### Customisation
 The plugin provides a range of settings that can be tuned as you wish. The current full options are:
 
 ```javascript
-defaults = {
+$.fn.socialModal.defaults = {
     useIcons: true,
-    url: encodeURIComponent(window.location.href),
+    url: window.location.href,
+    modal: {
+        showCss: null, // defaults to { "top": 0, "opacity": 1 } if unset
+        showAnimationDuration: 200,
+        hideCss: null, // defaults to { "top": "-100%", "opacity": 0 } if unset
+        hideAnimationDuration: 100,
+    },
     closeButton: {
         text: "esc",
         iconClass: "icon-cross",
@@ -99,35 +108,20 @@ defaults = {
         enabled: true,
         text: "Pin",
         iconClass: "icon-pinterest",
-        media: false,
+        media: $( 'meta[name="image"]' ).attr('content'),
         description: $( 'meta[name="description"]' ).attr('content'),
     },
 };
 ```
+The default animation is to fade and move in from the top. To have your own animation, simply provide the css
+for when the modal is hidden and the css for when it is shown. The modal will likely work if only supply one,
+but it probably won't look goof if it does, you're best off providing both.
 
-For example if you wanted to disable reddit, use your own close icon and provide a via for twitter you
-would call the plugin like this:
-
-```javascript
-$( '.some-element' ).socialModal({
-    closeButton: {
-        iconsClass: "your-close-icon",
-    },
-    twitter: {
-        via: "yourusername",
-    },
-    reddit: {
-        enabled: false,
-    },
-});
-```
-
-This assumes you have define `.your-close-icon` somewhere in your css.
-
-More options including customisable animations are coming in future release.
+For examples of using the options, check out the [examples](http://thinkbituk.github.io/social-modal/).
 
 You are also free to customise or override the styles provided in the `socialModal.css` file to suit
 your needs.
 
 ## Learn More
-Learn how to make a similar effect for yourself [in this blog post](http://blog.thinkbit.co.uk/a-simple-social-sharer-modal).
+Learn how to make a similar effect for yourself in this
+[blog post](http://blog.thinkbit.co.uk/a-simple-social-sharer-modal).
