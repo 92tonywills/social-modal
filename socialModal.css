@@ -1,0 +1,87 @@
+.socialModal {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.socialModal .button-container {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    top: 50%;
+    margin-top: -150px;
+    text-align: center;
+}
+
+.socialModal [class^="share-"] {
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    padding: 10px 25px;
+    font-size: 2rem;
+    color: #fff;
+    margin: 5px 5px;
+}
+
+.socialModal .share-facebook, .socialModal .share-facebook:hover {
+    border: none;
+    border-bottom: 3px solid #456299;
+}
+.socialModal .share-twitter, .socialModal .share-twitter:hover {
+    border: none;
+    border-bottom: 3px solid #4FADE9;
+}
+.socialModal .share-reddit, .socialModal .share-reddit:hover {
+    border: none;
+    border-bottom: 3px solid #E67E22;
+}
+.socialModal .share-gplus, .socialModal .share-gplus:hover {
+    border: none;
+    border-bottom: 3px solid #e34429;
+}
+.socialModal .share-pinterest, .socialModal .share-pinterest:hover {
+    border: none;
+    border-bottom: 3px solid #c5282f;
+}
+
+.socialModal .share-facebook:hover {
+    background-color: #456299;
+}
+.socialModal .share-twitter:hover {
+    background-color: #4FADE9;
+}
+.socialModal .share-reddit:hover {
+    background-color: #E67E22;
+}
+.socialModal .share-gplus:hover {
+    background-color: #e34429;
+}
+.socialModal .share-pinterest:hover {
+    background-color: #c5282f;
+}
+
+.socialModal [class*=" icon-"]:before, .socialModal [class^="icon-"]:before {
+    font-size: 2.3rem;
+    padding-right: 5px;
+}
+
+.socialModal .close-button {
+    width: auto;
+    margin: auto;
+    padding: 0;
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    font-size: 2rem;
+    background-color: transparent;
+    border: none;
+    color: #aaa;
+    vertical-align: top;
+}
+
+.socialModal .close-button:hover {
+    color: #ccc;
+}
+
+.socialModal .icon-cross:before {
+}
