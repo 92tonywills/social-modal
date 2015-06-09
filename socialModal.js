@@ -11,7 +11,7 @@
 
     $.fn.socialModal.defaults = {
         useIcons: true,
-        url: encodeURIComponent(window.location.href),
+        url: window.location.href,
         closeButton: {
             text: "esc",
             iconClass: "icon-cross",
@@ -42,7 +42,7 @@
             enabled: true,
             text: "Pin",
             iconClass: "icon-pinterest",
-            media: false,
+            media: $( 'meta[name="image"]' ).attr('content'),
             description: $( 'meta[name="description"]' ).attr('content'),
         },
     };
@@ -64,13 +64,8 @@
 
     var injectHTML = function() {
         modal = $("<div />").addClass("socialModal").appendTo("body");
+        addCloseButton();
         buttonContainer = $("<div />").addClass("button-container").appendTo(modal);
-
-        closeButton = $("<button />")
-            .addClass("close-button")
-            .text(opts.closeButton.text)
-            .appendTo(modal);
-
         !opts.facebook.enabled || addFacebookButton();
         !opts.twitter.enabled || addTwitterButton();
         !opts.reddit.enabled || addRedditButton();
@@ -79,30 +74,34 @@
         !opts.useIcons || addIconClasses();
     };
 
+    var addCloseButton = function() {
+        closeButton = $("<button />").addClass("close-button").text(opts.closeButton.text).appendTo(modal);
+    };
+
     var addFacebookButton = function() {
     facebookButton = $("<button />").addClass("share-facebook").text(opts.facebook.text)
         .click(facebookClickHandler).appendTo(buttonContainer);
-    }
+    };
 
     var addTwitterButton = function() {
     twitterButton = $("<button />").addClass("share-twitter").text(opts.twitter.text)
         .click(twitterClickHandler).appendTo(buttonContainer);
-    }
+    };
 
     var addRedditButton = function() {
     redditButton = $("<button />").addClass("share-reddit").text(opts.reddit.text)
         .click(redditClickHandler).appendTo(buttonContainer);
-    }
+    };
 
     var addGPlusButton = function() {
     gplusButton = $("<button />").addClass("share-gplus").text(opts.gplus.text)
         .click(gplusClickHandler).appendTo(buttonContainer);
-    }
+    };
 
     var addPinterestButton = function() {
     pinterestButton = $("<button />").addClass("share-pinterest").text(opts.pinterest.text)
         .click(pinterestClickHandler).appendTo(buttonContainer);
-    }
+    };
 
     var addIconClasses = function() {
         closeButton.addClass(opts.closeButton.iconClass);
@@ -143,27 +142,33 @@
     }
 
     var facebookClickHandler = function() {
-        popupWindow('https://facebook.com/sharer/sharer.php?u=' + opts.url);
+        var link = encodeURIComponent(opts.url);
+        popupWindow('https://facebook.com/sharer/sharer.php?u=' + link);
     };
 
     var twitterClickHandler = function() {
-        var url = 'https://twitter.com/intent/tweet?text=' + opts.twitter.tweetText + '&url=' + opts.url
-        if (opts.twitter.via) { url += '&via=' + opts.twitter.via; }
+        var link = encodeURIComponent(opts.url);
+        var url = 'https://twitter.com/intent/tweet?url=' + link;
+        if (opts.twitter.tweetText) { url += '&text=' + encodeURIComponent(opts.twitter.tweetText); }
+        if (opts.twitter.via) { url += '&via=' + encodeURIComponent(opts.twitter.via); }
         popupWindow(url);
     };
 
     var redditClickHandler = function() {
-        window.open('https://www.reddit.com/submit?url=' + opts.url);
+        var link = encodeURIComponent(opts.url);
+        window.open('https://www.reddit.com/submit?url=' + link);
     };
 
     var gplusClickHandler = function() {
-        popupWindow('https://plus.google.com/share?url=' + opts.url);
+        var link = encodeURIComponent(opts.url);
+        popupWindow('https://plus.google.com/share?url=' + link);
     };
 
     var pinterestClickHandler = function() {
-        var url = 'https://www.pinterest.com/pin/create/button?url=' + opts.url;
-        if (opts.pinterest.media) { url += '&media=' + opts.pinterest.media; }
-        if (opts.pinterest.description) { url += '&description=' + opts.pinterest.description; }
+        var link = encodeURIComponent(opts.url);
+        var url = 'https://www.pinterest.com/pin/create/button?url=' + link;
+        if (opts.pinterest.media) { url += '&media=' + encodeURIComponent(opts.pinterest.media); }
+        if (opts.pinterest.description) { url += '&description=' + encodeURIComponent(opts.pinterest.description); }
         popupWindow(url);
     };
 
